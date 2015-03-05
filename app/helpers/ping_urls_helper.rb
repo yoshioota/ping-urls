@@ -1,0 +1,2 @@
+module PingUrlsHelper
+end

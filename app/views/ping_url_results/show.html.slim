@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Ping url:
+  = link_to @ping_url_result.ping_url.url, @ping_url_result.ping_url
+p
+  strong Response body:
+  pre = @ping_url_result.response_body
+
+= link_to 'Edit', edit_ping_url_result_path(@ping_url_result)
+'|
+= link_to 'Back', ping_url_results_path

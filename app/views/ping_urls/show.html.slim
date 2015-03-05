@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Url:
+  = @ping_url.url
+
+div
+  - @ping_url.ping_url_results.each do |ping_url_result|
+    div = link_to truncate(ping_url_result.response_body), ping_url_result
+
+div= link_to 'Check', check_ping_url_path(@ping_url)
+
+= link_to 'Edit', edit_ping_url_path(@ping_url)
+'|
+= link_to 'Back', ping_urls_path

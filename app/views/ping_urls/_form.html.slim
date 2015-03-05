@@ -1,0 +1,12 @@
+= form_for @ping_url do |f|
+  - if @ping_url.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@ping_url.errors.count, "error")} prohibited this ping_url from being saved:"
+      ul
+        - @ping_url.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :url
+    = f.text_area :url
+  .actions = f.submit

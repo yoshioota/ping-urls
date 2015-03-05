@@ -1,0 +1,23 @@
+h1 Listing ping_url_results
+
+table
+  thead
+    tr
+      th Ping url
+      th Response body
+      th
+      th
+      th
+
+  tbody
+    - @ping_url_results.each do |ping_url_result|
+      tr
+        td = ping_url_result.ping_url
+        td = ping_url_result.response_body
+        td = link_to 'Show', ping_url_result
+        td = link_to 'Edit', edit_ping_url_result_path(ping_url_result)
+        td = link_to 'Destroy', ping_url_result, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Ping url result', new_ping_url_result_path
