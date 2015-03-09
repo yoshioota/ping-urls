@@ -56,3 +56,10 @@ gem 'bootstrap_form'
 
 gem 'foreman'
 gem 'puma'
+
+gem 'configatron'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

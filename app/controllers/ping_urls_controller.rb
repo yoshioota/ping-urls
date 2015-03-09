@@ -63,9 +63,7 @@ class PingUrlsController < ApplicationController
   end
 
   def check
-    unless HttpUtils.cached?(@ping_url.url)
-      @ping_url.ping_url_results.create(response_body: HttpUtils.get(@ping_url.url))
-    end
+    PingService.ping(@ping_url, true)
     redirect_to action: :show
   end
 

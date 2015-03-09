@@ -6,13 +6,11 @@ table
       th Url
       th
       th
-      th
 
   tbody
     - @ping_urls.each do |ping_url|
       tr
-        td = ping_url.url
-        td = link_to 'Show', ping_url
+        td = link_to ping_url.url, ping_url
         td = link_to 'Edit', edit_ping_url_path(ping_url)
         td = link_to 'Destroy', ping_url, data: {:confirm => 'Are you sure?'}, :method => :delete
 

@@ -6,9 +6,12 @@ p
 
 div
   - @ping_url.ping_url_results.each do |ping_url_result|
-    div = link_to truncate(ping_url_result.response_body), ping_url_result
+    div
+      div = link_to truncate(ping_url_result.response_body), ping_url_result
+      div = l ping_url_result.created_at
 
-div= link_to 'Check', check_ping_url_path(@ping_url)
+div
+  = link_to 'Check', check_ping_url_path(@ping_url)
 
 = link_to 'Edit', edit_ping_url_path(@ping_url)
 '|

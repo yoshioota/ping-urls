@@ -3,16 +3,22 @@ require 'open-uri'
 class HttpUtils
 
   def self.cached?(url)
-    !!Rails.cache.read("html_caches.#{Digest::MD5.hexdigest(url)}")
+    !!Rails.cache.read(url_hash(url))
   end
 
-  def self.get(_url)
+  def self.get(_url, force = false)
     url = _url.strip
-    Rails.cache.fetch("html_caches.#{Digest::MD5.hexdigest(url)}", expires_in: 9.minutes) do
+
+    Rails.cache.delete(url_hash(url)) if force
+
+    Rails.cache.fetch(url_hash(url), expires_in: 9.minutes) do
       ret = open(url).read
       sleep(1)
       ret
     end
   end
 
+  def self.url_hash(url)
+    "html_caches.#{Digest::MD5.hexdigest(url)}"
+  end
 end
