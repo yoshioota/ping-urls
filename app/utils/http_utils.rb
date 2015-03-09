@@ -11,7 +11,7 @@ class HttpUtils
 
     Rails.cache.delete(url_hash(url)) if force
 
-    Rails.cache.fetch(url_hash(url), expires_in: 9.minutes) do
+    Rails.cache.fetch(url_hash(url), expires_in: configatron.ping_cache_expires_in) do
       ret = open(url).read
       sleep(1)
       ret

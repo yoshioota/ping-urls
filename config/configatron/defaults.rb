@@ -7,3 +7,5 @@
 #   configatron.file.storage = :s3
 
 configatron.ping_url_history_limit = 2
+
+configatron.ping_cache_expires_in = 9.minutes
