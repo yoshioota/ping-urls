@@ -1,8 +1,8 @@
 class PingService
 
-  def self.ping_all
+  def self.ping_all(force = false)
     PingUrl.find_each do |ping_url|
-      ping(ping_url)
+      ping(ping_url, force)
     end
   end
 
@@ -15,6 +15,7 @@ class PingService
       ping_url.ping_url_results.order('ping_url_results.id ASC').first.destroy
     end
 
+    Rails.logger
     ping_url.ping_url_results.create(response_body: HttpUtils.get(ping_url.url, force))
 
     true

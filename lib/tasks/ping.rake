@@ -4,4 +4,5 @@ namespace :ping do
   task :all => :environment do
     PingService.ping_all
   end
+
 end
